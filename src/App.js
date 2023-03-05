@@ -22,7 +22,9 @@ function App() {
 
     // Upload file to Cloud Storage
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
-      alert("Image uploaded!");
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageList((prev) => [...prev, url]);
+      });
     });
   };
 
